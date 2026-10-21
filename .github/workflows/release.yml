@@ -6,6 +6,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'v1'
+        required: true
+        type: string
 
 permissions:
   contents: read
