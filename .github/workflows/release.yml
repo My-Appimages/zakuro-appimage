@@ -14,6 +14,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt-get install -y libfuse2
+
+      - name: Download and Setup LinuxDeploy
+        run: |
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          chmod a+x linuxdeploy-x86_64.AppImage
+
       - name: Check out repository
         uses: actions/checkout@v4
 
