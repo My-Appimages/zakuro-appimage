@@ -1,16 +1,19 @@
+
 name: Create Release
 
 on:
   push:
     tags:
-      - 'v*' # Triggers the workflow on any tag starting with v
+      - 'v*'
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Essential permission to create releases
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -18,5 +21,6 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          generateReleaseNotes: true # Automatically generates release notes from PRs/commits
+          artifacts: "Zakuro-x86_64.AppImage"
+          generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
