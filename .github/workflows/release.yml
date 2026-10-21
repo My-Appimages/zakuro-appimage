@@ -5,11 +5,10 @@ on:
   push:
     tags:
       - 'v*'
-
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Release tag (e.g. v1.0.0)'
+        description: 'v1'
         required: true
         type: string
 
@@ -22,8 +21,8 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libfuse2 libudev1 libasound2 jq curl
+          sudo apt update
+          sudo apt-get install -y libfuse2
 
       - name: Download and Setup LinuxDeploy
         run: |
