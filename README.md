@@ -17,3 +17,4 @@ While other platforms, already exist i made this repository purely as a learning
 > Safety note
 > This repository's Github Action workflow currently does not verify the integrity of the upstream binary. proceed with caution
 > If the upstream binary or workflow ends up being compromised, the AppImage here could contain malicious code. use this at your own risk!
+> The good thing is i can at least vet the binary before manually running the workflow, but security is still not guaranteed and AppImage may be out of date.
