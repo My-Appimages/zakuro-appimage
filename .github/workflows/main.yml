@@ -1,0 +1,34 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    name: Build and Create Release
+    runs-on: ubuntu-latest
+    
+    # Required permissions to write releases and tags
+    permissions:
+      contents: write
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: OPTIONAL - Build your app or bundle assets here if needed
+      # (e.g., npm run build, zip up files, compile binaries, etc.)
+
+      # Step 3: Create the GitHub Release and upload assets
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # Automatically generates release notes based on your commit history/PRs
+          generate_release_notes: true
+          # Optional: Add specific files/artifacts to the release if you build them in Step 2
+          # files: |
+          #   dist/my-app.zip
+          #   build/output.exe
