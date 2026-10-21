@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Name=Zakuro
-GenericName=3DS Recompiler emulator
-Comment=A 3DS Recompiler emulator that compiles code to x86_64 and runs it natively with some being interpreted
-Exec=Zakuro-bin
-Icon=Zakuro
-Type=Application
-Categories=Game;Emulator;

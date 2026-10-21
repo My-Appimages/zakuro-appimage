@@ -64,6 +64,7 @@ cleanup(){
   rm LICENSE
   rm README.md
   rm Zakuro-bin
+  rm -rf Zakuro.AppDir
 }
 
 prepare_binary
