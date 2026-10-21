@@ -54,15 +54,21 @@ package() {
 
 # Commit then publish to github (Optional requires login)
 publish_to_github(){
+  git add .
+  git commit -m "Publish appimage"
+  git push
 }
 
 cleanup(){
   rm zakuro-linux-x86_64.tar.gz
   rm LICENSE
   rm README.md
+  rm Zakuro-bin
 }
 
 prepare_binary
 build
 include_icons
 package
+cleanup
+publish_to_github
