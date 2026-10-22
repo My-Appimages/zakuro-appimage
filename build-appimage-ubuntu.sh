@@ -62,18 +62,17 @@ prepare_binary() {
 
 build() {
   local libudev_path
-  local libasound_path
+  #local libasound_path
 
   libudev_path="$(find_library libudev.so.1)"
-  libasound_path="$(find_library libasound.so.2)"
+  #libasound_path="$(find_library libasound.so.2)"
 
   echo "Using libudev: $libudev_path"
-  echo "Using libasound: $libasound_path"
+  #echo "Using libasound: $libasound_path"
 
   linuxdeploy \
     --executable "$executable_path" \
     -l "$libudev_path" \
-    -l "$libasound_path" \
     --desktop-file "$desktop_file_path" \
     --icon-file "$icon_path" \
     --appdir "$appdir"
