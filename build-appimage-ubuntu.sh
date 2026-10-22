@@ -37,28 +37,40 @@ prepare_binary() {
 
   local api_url="https://api.github.com/repos/fearkov/zakuro/releases/latest"
   local asset_url
+  local archive="zakuro-linux-x86_64.tar.gz"
 
   asset_url="$(
     curl -fsSL "$api_url" |
       jq -er '
         [
           .assets[]
-          | select(.name | test("linux-x64\\.tar\\.gz$"; "i"))
+          | select(.name | test("linux.*(x86[_-]64|x64).*\\.tar\\.gz$"; "i"))
         ]
         | if length == 1 then
             .[0].browser_download_url
           else
-            error("Expected exactly one Linux x64 tar.gz asset")
+            error(
+              "Expected exactly one Linux x86-64 tar.gz asset; found \(length). Assets: "
+              + ([.[].name] | join(", "))
+            )
           end
       '
   )"
 
   curl -fL --retry 3 "$asset_url" -o "$archive"
-  tar -xzf zakuro-linux-x86_64.tar.gz
+
+  tar -tzf "$archive" >/dev/null
+  tar -xzf "$archive"
+
+  [[ -f zakuro ]] || {
+    echo "ERROR: Archive does not contain a file named zakuro" >&2
+    return 1
+  }
 
   mv zakuro "$executable_path"
   chmod +x "$executable_path"
 }
+
 
 build() {
   local libudev_path
