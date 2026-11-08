@@ -1,3 +1,7 @@
+> # Discontinuation Notice
+> As of November 5th the developer of Zakuro (fearkov) has have added appimage support on https://github.com/fearkov/zakuro/issues/21#issuecomment-6701268928 in newer releases, thus theres no point of maintaining this appimage repo anymore please download the newer releases from official repository instead [Here](https://github.com/fearkov/zakuro/releases).
+
+
 <img width="256" height="256" alt="Zakuro@2x" src="https://github.com/user-attachments/assets/5b582dbf-c21d-4cd8-ade4-444e7d8c4def" />
 
 An unofficial appimage for [Zakuro](https://github.com/fearkov/zakuro/releases)
